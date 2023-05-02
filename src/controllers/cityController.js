@@ -1,5 +1,6 @@
 // import
-const fCityController = require("../utils/fxControllerCity");
+//const fCityController = require("../utils/fxControllerCity");
+const cityService = require("../services/cityServices");
 
 // * * E N D * P O I N T * *
 const controller = {
@@ -36,9 +37,9 @@ const controller = {
       });
     }
   },
-  saveCity: fCityController.saveCity(),
-  removeCityById: fCityController.removeCityById(),
-  editCityById: fCityController.editCityById(),
+  //saveCity: fCityController.saveCity(),
+  //removeCityById: fCityController.removeCityById(),
+  //editCityById: fCityController.editCityById(),
 };
 
 // export then controller
