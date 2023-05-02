@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // url de acceso a mongodb
-'mongodb+srv://leodesam:SW25QbVK8DF4BI6i@cluster0.numxigu.mongodb.net/?retryWrites=true&w=majority';
+const uri = "mongodb+srv://leomartinez:AaQSX8Wq8xVySbUR@cluster0.numxigu.mongodb.net/?retryWrites=true&w=majority";
 
 // conectando a la base 
 async function conectarDB(){
