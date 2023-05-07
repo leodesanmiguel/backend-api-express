@@ -12,8 +12,11 @@ const City = new Schema({
     timezone: Number,
     area: Number,
     population: Number,
-    zip: String
-  
+    zip: String,
+    itineraries: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Itinerary'
+    }]
 });
 // export model
 module.exports = mongoose.model('City', City);

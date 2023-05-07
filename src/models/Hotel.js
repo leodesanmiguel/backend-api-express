@@ -6,12 +6,12 @@ const Schema = mongoose.Schema;
 const Hotel = new Schema({
     name: String,
     address: String,
-    nameCity: String,
     country: String,
     type: Number,
     stars: Number,
     coordinate: String,
     image: String,
+    nameCity: String,
 });
 // export model
 module.exports = mongoose.model('Hotel', Hotel);
