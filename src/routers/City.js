@@ -7,12 +7,12 @@ const cityController = require("../controllers/cityController");
 
 // endpoint Get
 router.get("/all", cityController.getAllCities);
-router.get("/id/:id", citycontroller.getCityById);
+router.get("/id/:id", cityController.getCityById);
 router.get("/country", cityController.getGetCitiesForCountry);
 router.get("/", cityController.getCitiesForFilter);
 
 // endpoint Post
-router.post("/", cityController.saveCity);
+router.post("/save", cityController.saveCity);
 
 // endpoint Delete
 router.delete("/remove/:id", cityController.removeCityById);

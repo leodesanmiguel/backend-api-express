@@ -21,7 +21,7 @@ app.use(cors());
 // ----------------------------------------------------
 // configuración para la restricción de acceso a la API
 // ... lista blanca de los que tienen acceso
-const whiteList = ["http://localhost:3000"];
+const whiteList = ["http://localhost:3000", "http://localhost:3002"];
 // ... Opciones: Si está en la lista blanca, entonces SI
 //               sino NO 
 const corsOption = {
@@ -40,7 +40,9 @@ conectarDB();
 app.use(bodyParser.json());
 //***********************************************************************/
 // ubicación de los modelos
-app.use("/api/cities", cors(corsOption), require("../routers/City")); //listado de Ciudades
+//app.use("/api/cities", cors(corsOption), require("../routers/City")); //listado de Ciudades
+app.use("/api/cities", require("../routers/City")); //listado de Ciudades
+app.use("/api/itineraries", require("../router/Itinerary"));
 //app.use('/api/hotels', require('../routers/Hotel')); // Listado de Hoteles
 //app.use('/api/users', require('../routers/User'));   // Listado de Ussuarios
 //***********************************************************************/

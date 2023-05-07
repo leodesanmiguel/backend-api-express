@@ -9,8 +9,14 @@ const controller = {
     console.log("PROBANDO1");
     try {
       let itineraries = await itineraryService.getAllItineraries();
-      res.json({ itineraries });
-      console.log("PROBANDO2");
+
+      // respuesta para Postman
+      console.log("Lista de los itinerarios:\n" + itineraries);
+      res.json({
+        mensaje: "Lista de todos los itinerarios:",
+        cities: itineraries,
+      });
+      //
     } catch (error) {
       res.json({ error: error });
     }
@@ -18,8 +24,24 @@ const controller = {
   },
   addItinerary: async function (req, res) {
     try {
-      // localgost:3001/api/itineraries/toCity/:idCity Body: {Itinerary}
       const city = await City.findById(req.params.cityId);
+      console.log("recupero la ciudad :\n" + city);
+
+      // MODELO DE ITINERARY
+      // const Itinerary = new Schema({
+      //   name: String,
+      //   author: String,
+      //   duration: Number,
+      //   hashtags: { type: [String], default: [] },
+      //   likes: { type: Number, default: 0 },
+      //   activities: { type: [String], default: [] },
+      //   extras: { type: [String], default: [] },
+      //   price: Number,
+      //   cityId: {
+      //     type: Schema.Types.ObjectId,
+      //     ref: "City",
+      //   },
+      // });
 
       const itinerary = new Itinerary({
         name: req.body.name,
@@ -27,12 +49,22 @@ const controller = {
         duration: req.body.duration,
         hashtags: req.body.hashtags,
         likes: req.body.likes,
+        activities: req.body.activities,
+        extras: req.body.extras,
+        price: req.body.price,
         cityId: city._id,
       });
       await itinerary.save();
       city.itineraries.push(itinerary._id);
       await city.save();
-      res.json(city);
+
+      // respuesta para Postman
+      console.log("Ingreso del itinerario:\n" + itinerary);
+      res.json({
+        mensaje: "Ingreso del itinerario:",
+        cities: itinerary,
+      });
+      //
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Error adding itinerary to city" });
@@ -48,13 +80,19 @@ const controller = {
   },
   modifyItinerary: async function (req, res) {
     try {
+      const city = await City.findById(req.params.cityId);
+      console.log("recupero la ciudad :\n" + city);
+
       let itineraryToUpdate = {
         name: req.body.name,
         author: req.body.author,
         duration: req.body.duration,
         hashtags: req.body.hashtags,
         likes: req.body.likes,
-        cityId: req.body.cityId,
+        activities: req.body.activities,
+        extras: req.body.extras,
+        price: req.body.price,
+        cityId: city._id,
       };
       let updated = await itineraryService.updateitineraryById(
         req.body.id,
