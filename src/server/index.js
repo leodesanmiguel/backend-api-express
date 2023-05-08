@@ -27,7 +27,7 @@ const whiteList = ["http://localhost:3000", "http://localhost:3002"];
 const corsOption = {
   origin: (origin, callback) => {
     if (whiteList.indexOf(origin) !== -1) {
-      callback(null, tree);
+      callback(null, true);
     } else {
       callback(new Error("📛 Not Allowed by CORS ❌"));
     }

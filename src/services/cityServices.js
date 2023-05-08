@@ -65,7 +65,7 @@ const cityService = {
     }
   },
   getCityById: async function (id) {
-    let city = await City.findById(id);
+    let city = await City.findById(id).populate('itineraries');
     return city;
   },
   getCitiesForCountry: async (country) => {
@@ -119,29 +119,12 @@ const cityService = {
   // });
 
   
-  saveCity: async function (
-    name,
-    country,
-    demonym,
-    image,
-    flag,
-    timezone,
-    area,
-    population,
-    zip
-  ) {
+  saveCity: async function (body) {
     let city = await new City({
-      name: name,
-      country: country,
-      demonym: demonym,
-      image: image,
-      flag: flag,
-      timezone: timezone,
-      area: area,
-      population: population,
-      zip: zip,
-      itineraries: []
-    }).save();
+      name: body.name,
+      country: body.country,
+      image: body.image,
+      }).save();
 
   },
   removeCityById: async function (id) {

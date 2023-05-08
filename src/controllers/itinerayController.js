@@ -24,6 +24,7 @@ const controller = {
   },
   addItinerary: async function (req, res) {
     try {
+      console.log(req.body);
       const city = await City.findById(req.params.cityId);
       console.log("recupero la ciudad :\n" + city);
 

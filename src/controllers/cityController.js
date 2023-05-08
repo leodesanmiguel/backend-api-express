@@ -67,17 +67,8 @@ const controller = {
   },
   saveCity: async function (req, res) {
     try {
-      let city = await cityService.saveCity(
-        req.body.name,
-        req.body.country,
-        req.body.demonym,
-        req.body.image,
-        req.body.flag,
-        req.body.timezone,
-        req.body.area,
-        req.body.population,
-        req.body.zip
-      );
+      console.log(req.body);
+      let city = await cityService.saveCity(req.body);
       // respuesta para Postman
       res.json("Guarda exitosamente la ciudad:" + city);
     } catch (error) {

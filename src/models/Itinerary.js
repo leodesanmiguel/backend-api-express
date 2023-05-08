@@ -4,14 +4,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Itinerary = new Schema({
-  name: String,
-  author: String,
-  duration: Number,
+  name: { type: String, default: "" },
+  author: { type: String, default: "" },
+  duration: { type: Number, default: 0 },
   hashtags: { type: [String], default: [] },
   likes: { type: Number, default: 0 },
   activities: { type: [String], default: [] },
   extras: { type: [String], default: [] },
-  price: Number,
+  price: { type: Number, default: 0 },
   cityId: {
     type: Schema.Types.ObjectId,
     ref: "City",
