@@ -117,6 +117,8 @@ const cityService = {
   //       ref: 'Itinerary'
   //   }]
   // });
+
+  
   saveCity: async function (
     name,
     country,
@@ -130,10 +132,17 @@ const cityService = {
   ) {
     let city = await new City({
       name: name,
-      countryName: countryName,
-      imageUrl: imageUrl,
+      country: country,
+      demonym: demonym,
+      image: image,
+      flag: flag,
+      timezone: timezone,
+      area: area,
+      population: population,
+      zip: zip,
+      itineraries: []
     }).save();
-    return city;
+
   },
   removeCityById: async function (id) {
     let removed = City.findByIdAndRemove(id);

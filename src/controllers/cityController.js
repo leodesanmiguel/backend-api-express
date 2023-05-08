@@ -69,16 +69,22 @@ const controller = {
     try {
       let city = await cityService.saveCity(
         req.body.name,
-        req.body.countryName,
-        req.body.imageUrl
+        req.body.country,
+        req.body.demonym,
+        req.body.image,
+        req.body.flag,
+        req.body.timezone,
+        req.body.area,
+        req.body.population,
+        req.body.zip
       );
       // respuesta para Postman
       res.json("Guarda exitosamente la ciudad:" + city);
     } catch (error) {
-      console.log("⚠ Endpoint error: saveCity\n" + error);
+      console.log("⚠ Endpoint error: saveCity\n" + error.message);
       res.json({
         endpoint: "⚠ Endpoint error:saveCity",
-        error: error,
+        error: error.message,
       });
     }
   },
